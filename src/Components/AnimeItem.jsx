@@ -56,9 +56,9 @@ function AnimeItem() {
       </div>
       <MDBBtn
         href="/"
-        className="position-absolute top-0 end-0 fs-2"
-        color="tertiary"
-        rippleColor="light"
+        className="text-light position-absolute top-0 end-0 fs-2"
+        color="#00ecc7"
+        rippleColor="dark"
       >
         Anime Wiki
       </MDBBtn>
@@ -159,16 +159,17 @@ function AnimeItem() {
 
 const AnimeItemStyled = styled.div`
   padding: 3rem 18rem;
-  background-color: #ededed;
+  background-color: #050000;
 
   .back {
     position: absolute;
     top: 2rem;
     left: 2rem;
+
     a {
       font-weight: 600;
       text-decoration: none;
-      color: #eb5757;
+      color: #00ecc7;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -200,7 +201,7 @@ const AnimeItemStyled = styled.div`
 
   .description {
     margin-top: 2rem;
-    color: #6c7983;
+    color: black;
     line-height: 1.7rem;
     button {
       background-color: transparent;
@@ -208,7 +209,7 @@ const AnimeItemStyled = styled.div`
       outline: none;
       cursor: pointer;
       font-size: 1.2rem;
-      color: #27ae60;
+      color: #0d6a6e;
       font-weight: 600;
     }
   }
@@ -222,12 +223,12 @@ const AnimeItemStyled = styled.div`
       border: 5px solid #e5e7eb;
       padding: 1.5rem;
       border-radius: 10px;
-      background-color: #ffffff;
+      background-color: #699497;
     }
   }
 
   .details {
-    background-color: #fff;
+    background-color: #699497;
     border-radius: 20px;
     padding: 2rem;
     border: 5px solid #e5e7eb;
@@ -247,11 +248,12 @@ const AnimeItemStyled = styled.div`
       p {
         display: flex;
         gap: 1rem;
+        color: black;
       }
 
       p span:first-child {
         font-weight: 600;
-        color: #454e56;
+        color: black;
       }
     }
   }
@@ -260,7 +262,7 @@ const AnimeItemStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 2rem;
-    background-color: #fff;
+    background-color: #699497;
     padding: 2rem;
     border-radius: 20px;
     border: 5px solid #e5e7eb;

@@ -34,7 +34,7 @@ function Gallery() {
 
       <MDBBtn
         href="/"
-        className="position-absolute top-0 end-0 fs-2"
+        className="text-light position-absolute top-0 end-0 fs-2"
         color="tertiary"
         rippleColor="light"
       >
@@ -70,7 +70,7 @@ function Gallery() {
 }
 
 const GalleryStyled = styled.div`
-  background-color: #ededed;
+  background-color: #050000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -87,11 +87,10 @@ const GalleryStyled = styled.div`
     color: #eb5757;
     font-weight: 600;
     font-size: 1.2rem;
-
     a {
       font-weight: 600;
       text-decoration: none;
-      color: #eb5757;
+      color: #00ecc7;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -102,7 +101,7 @@ const GalleryStyled = styled.div`
     display: inline-block;
     padding: 2rem;
     margin: 2rem 0;
-    background-color: #fff;
+    background-color: #699497;
     border-radius: 7px;
     border: 5px solid #e5e7eb;
     position: relative;
@@ -119,7 +118,7 @@ const GalleryStyled = styled.div`
     width: 80%;
     padding: 2rem;
     border-radius: 7px;
-    background-color: #fff;
+    background-color: #699497;
     border: 5px solid #e5e7eb;
 
     img {

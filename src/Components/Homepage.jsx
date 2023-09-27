@@ -45,8 +45,8 @@ function Homepage() {
       <header>
         <MDBBtn
           href="/"
-          className="position-absolute top-0 start-0 fs-2"
-          color="tertiary"
+          className=" position-absolute top-0 start-0 fs-2"
+          color="#00ecc7"
           rippleColor="light"
         >
           Anime Wiki
@@ -115,7 +115,7 @@ function Homepage() {
         </div>
       </header>
       {switchComponents()}
-      <MDBFooter bgColor="light" className="text-center text-lg-left">
+      <MDBFooter bgColor="#050000" className="text-center text-lg-left">
         <MDBContainer className="p-4 pb-0">
           <section className="mb-4">
             <MDBBtn
@@ -131,7 +131,9 @@ function Homepage() {
             <MDBBtn
               floating
               className="m-1"
-              style={{ backgroundColor: "#55acee" }}
+              style={{
+                backgroundColor: "#55acee",
+              }}
               href="#!"
               role="button"
             >
@@ -183,7 +185,7 @@ function Homepage() {
           <form action="">
             <MDBRow className="d-flex justify-content-center">
               <MDBCol size="auto" className="mb-4 mb-md-0">
-                <p className="pt-2">
+                <p className="text-success pt-2">
                   <strong>Sign up for our newsletter</strong>
                 </p>
               </MDBCol>
@@ -193,7 +195,7 @@ function Homepage() {
               </MDBCol>
 
               <MDBCol size="auto" className="mb-4 mb-md-0">
-                <MDBBtn color="dark" rippleColor="light">
+                <MDBBtn color="success" rippleColor="light">
                   Subscribe
                 </MDBBtn>
               </MDBCol>
@@ -202,8 +204,8 @@ function Homepage() {
         </MDBContainer>
 
         <div
-          className="text-center p-3"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+          className="text-center text-success p-3"
+          style={{ backgroundColor: "#050000" }}
         >
           &copy; {new Date().getFullYear()} Copyright{" "}
         </div>
@@ -213,9 +215,10 @@ function Homepage() {
 }
 
 const HomepageStyled = styled.div`
-  background-color: #ededed;
+  background-color: #050000;
   header {
-    padding: 2rem 5rem;
+    padding-top: 2rem;
+    color: #00ecc7;
     width: 60%;
     margin: 0 auto;
     transition: all 0.4s ease-in-out;
@@ -231,10 +234,12 @@ const HomepageStyled = styled.div`
     }
     .search-container {
       display: flex;
+      font-color: #00ecc7;
       align-items: center;
       justify-content: center;
       gap: 1rem;
       button {
+        color: #00ecc7;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -242,15 +247,18 @@ const HomepageStyled = styled.div`
         outline: none;
         border-radius: 30px;
         font-size: 1.2rem;
-        background-color: #fff;
+        background-color: transparent;
         cursor: pointer;
         transition: all 0.4s ease-in-out;
         font-family: inherit;
-        border: 5px solid #e5e7eb;
+        border: transparent;
+        &:hover {
+          background-color: #699497;
+        }
       }
       form {
         position: relative;
-        width: 100%;
+        width: 50vh;
         .input-control {
           position: relative;
           transition: all 0.4s ease-in-out;
@@ -264,11 +272,12 @@ const HomepageStyled = styled.div`
           border-radius: 30px;
           font-size: 1.2rem;
           background-color: #fff;
-          border: 5px solid #e5e7eb;
+          border: 2px solid #e5e7eb;
           transition: all 0.4s ease-in-out;
         }
         .input-control button {
           position: absolute;
+          background-color: #699497;
           right: 0;
           top: 50%;
           transform: translateY(-50%);
