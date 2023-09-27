@@ -4,15 +4,15 @@ import { useGlobalContext } from "../context/global";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
-  const { popularAnime } = useGlobalContext();
+  const { upcomingAnime } = useGlobalContext();
 
-  const sorted = popularAnime?.sort((a, b) => {
+  const sorted = upcomingAnime?.sort((a, b) => {
     return b.score - a.score;
   });
 
   return (
     <SidebarStyled>
-      <h5>Top 5 Popular</h5>
+      <h5>Top 5 Upcoming Anime</h5>
       <div className="anime">
         {sorted?.slice(0, 8).map((anime) => (
           <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>

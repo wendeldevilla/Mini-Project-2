@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 function AnimeItem() {
   const { id } = useParams();
@@ -53,6 +54,14 @@ function AnimeItem() {
           Back to Home
         </Link>
       </div>
+      <MDBBtn
+        href="/"
+        className="position-absolute top-0 end-0 fs-2"
+        color="tertiary"
+        rippleColor="light"
+      >
+        Anime Wiki
+      </MDBBtn>
       <h1>{title}</h1>
       <div className="details">
         <div className="detail">

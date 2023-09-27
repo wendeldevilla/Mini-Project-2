@@ -43,6 +43,14 @@ function Homepage() {
   return (
     <HomepageStyled>
       <header>
+        <MDBBtn
+          href="/"
+          className="position-absolute top-0 start-0 fs-2"
+          color="tertiary"
+          rippleColor="light"
+        >
+          Anime Wiki
+        </MDBBtn>
         <div className="search-container">
           <div className="filter-btn popular-filter">
             <button

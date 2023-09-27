@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useGlobalContext } from "../context/global";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 function Gallery() {
   const { getAnimePictures, pictures } = useGlobalContext();
@@ -30,6 +31,15 @@ function Gallery() {
           Back
         </button>
       </div>
+
+      <MDBBtn
+        href="/"
+        className="position-absolute top-0 end-0 fs-2"
+        color="tertiary"
+        rippleColor="light"
+      >
+        Anime Wiki
+      </MDBBtn>
       <div className="big-image">
         <img src={pictures[index]?.jpg.image_url} alt="" />
       </div>
