@@ -12,6 +12,8 @@ function Homepage() {
     handleChange,
     getUpcomingAnime,
     getAiringAnime,
+    isSearch,
+    searchResults,
   } = useGlobalContext();
 
   const [rendered, setRendered] = React.useState("popular");
@@ -51,17 +53,28 @@ function Homepage() {
               Popular<i className="fas fa-fire"></i>
             </button>
           </div>
-          <form action="" className="search-form" onSubmit={handleSubmit}>
-            <div className="input-control">
-              <input
-                type="text"
-                placeholder="Search Anime"
-                value={search}
-                onChange={handleChange}
-              />
-              <button type="submit">Search</button>
-            </div>
-          </form>
+          <div>
+            <form action="" className="search-form" onSubmit={handleSubmit}>
+              <div className="input-control">
+                <input
+                  type="text"
+                  placeholder="Search Anime"
+                  value={search}
+                  onChange={handleChange}
+                />
+                <button type="submit">Search</button>
+              </div>
+            </form>
+            {isSearch && searchResults.length === 0 && <p>No results found</p>}
+
+            {isSearch && searchResults.length > 0 && (
+              <ul>
+                {searchResults.map((result) => (
+                  <li key={result.id}>{result.name}</li>
+                ))}
+              </ul>
+            )}
+          </div>
           <div className="filter-btn airing-filter">
             <button
               onClick={() => {
@@ -131,6 +144,7 @@ const HomepageStyled = styled.div`
           position: relative;
           transition: all 0.4s ease-in-out;
         }
+
         .input-control input {
           width: 100%;
           padding: 0.7rem 1rem;
