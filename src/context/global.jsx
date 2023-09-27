@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useReducer } from "react";
 
 const GlobalContext = createContext();
-
 const baseUrl = "https://api.jikan.moe/v4";
 
-//actions
+// actions
 const LOADING = "LOADING";
 const SEARCH = "SEARCH";
 const GET_POPULAR_ANIME = "GET_POPULAR_ANIME";
@@ -12,7 +11,7 @@ const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
 const GET_PICTURES = "GET_PICTURES";
 
-//reducer
+// reducer
 const reducer = (state, action) => {
   switch (action.type) {
     case LOADING:
@@ -33,7 +32,7 @@ const reducer = (state, action) => {
 };
 
 export const GlobalContextProvider = ({ children }) => {
-  //initial state
+  // initial state
   const initialState = {
     popularAnime: [],
     upcomingANime: [],
@@ -47,7 +46,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [search, setSearch] = React.useState("");
 
-  //handle change
+  // handle change
   const handleChange = (e) => {
     setSearch(e.target.value);
     if (e.target.value === "") {
@@ -55,8 +54,7 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
-  //handle submit
-
+  // handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
     if (search) {
@@ -68,7 +66,7 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
-  //fetch popular anime
+  // fetch popular anime
   const getPopularAnime = async () => {
     dispatch({ type: LOADING });
     const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
@@ -76,7 +74,7 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
   };
 
-  //fetch upcoming anime
+  // fetch upcoming anime
   const getUpcomingAnime = async () => {
     dispatch({ type: LOADING });
     const response = await fetch(`${baseUrl}/top/anime?filter=upcoming`);
@@ -84,7 +82,7 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_UPCOMING_ANIME, payload: data.data });
   };
 
-  //fetch airing anime
+  // fetch airing anime
   const getAiringAnime = async () => {
     dispatch({ type: LOADING });
     const response = await fetch(`${baseUrl}/top/anime?filter=airing`);
@@ -92,7 +90,7 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_AIRING_ANIME, payload: data.data });
   };
 
-  //search anime
+  // search anime
   const searchAnime = async (anime) => {
     dispatch({ type: LOADING });
     const response = await fetch(
@@ -102,7 +100,7 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: SEARCH, payload: data.data });
   };
 
-  //get anime pictures
+  // get anime pictures
   const getAnimePictures = async (id) => {
     dispatch({ type: LOADING });
     const response = await fetch(
@@ -112,7 +110,7 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_PICTURES, payload: data.data });
   };
 
-  //initial render
+  // initial render
   React.useEffect(() => {
     getPopularAnime();
   }, []);

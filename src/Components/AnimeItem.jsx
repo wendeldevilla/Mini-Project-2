@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 function AnimeItem() {
   const { id } = useParams();
+  const [anime, setAnime] = useState({});
+  const [characters, setCharacters] = useState([]);
+  const [showMore, setShowMore] = useState(false);
 
-  //state
-  const [anime, setAnime] = React.useState({});
-  const [characters, setCharacters] = React.useState([]);
-  const [showMore, setShowMore] = React.useState(false);
-
-  //destructure anime
   const {
     title,
     synopsis,
@@ -29,15 +25,12 @@ function AnimeItem() {
     source,
   } = anime;
 
-  // get anime base on id
-
   const getAnime = async (anime) => {
     const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}`);
     const data = await response.json();
     setAnime(data.data);
   };
 
-  //get characters
   const getCharacters = async (anime) => {
     const response = await fetch(
       `https://api.jikan.moe/v4/anime/${anime}/characters`
@@ -46,8 +39,6 @@ function AnimeItem() {
     setCharacters(data.data);
     console.log(data.data);
   };
-
-  //initial renders
 
   useEffect(() => {
     getAnime(id);
@@ -66,7 +57,7 @@ function AnimeItem() {
       <div className="details">
         <div className="detail">
           <div className="image">
-            <img src={images?.jpg.large_image_url} />
+            <img src={images?.jpg.large_image_url} alt="" />
           </div>
           <div className="anime-details">
             <p>
@@ -122,7 +113,6 @@ function AnimeItem() {
           </button>
         </p>
       </div>
-
       <h3 className="title">Trailer</h3>
       <div className="trailer-con">
         {trailer?.embed_url ? (
@@ -135,7 +125,7 @@ function AnimeItem() {
             allowFullScreen
           ></iframe>
         ) : (
-          <h3> Trailer not available</h3>
+          <h3>Trailer not available</h3>
         )}
       </div>
       <h3 className="title">Characters</h3>
