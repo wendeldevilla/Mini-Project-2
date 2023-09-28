@@ -38,105 +38,111 @@ function Homepage() {
       case "popular":
         return (
           <>
-            <Carousel
-              indicators={false}
-              interval={1200}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {popularAnime &&
-                popularAnime.map((anime) => (
-                  <Carousel.Item key={anime.id}>
-                    <img
-                      height={680}
-                      className="d-block"
-                      src={anime.images.jpg.large_image_url}
-                      alt={anime.name}
-                      style={{ margin: "0 auto" }}
-                      onClick={() =>
-                        (window.location.href = `/anime/${anime.mal_id}`)
-                      }
-                    />
-                    <Carousel.Caption>
-                      <h3>{anime.name}</h3>
-                      <p>{anime.description}</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                ))}
-            </Carousel>
+            {!isSearch && (
+              <Carousel
+                indicators={false}
+                interval={1200}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {popularAnime &&
+                  popularAnime.map((anime) => (
+                    <Carousel.Item key={anime.id}>
+                      <img
+                        height={680}
+                        className="d-block"
+                        src={anime.images.jpg.large_image_url}
+                        alt={anime.name}
+                        style={{ margin: "0 auto" }}
+                        onClick={() =>
+                          (window.location.href = `/anime/${anime.mal_id}`)
+                        }
+                      />
+                      <Carousel.Caption>
+                        <h3>{anime.name}</h3>
+                        <p>{anime.description}</p>
+                      </Carousel.Caption>
+                    </Carousel.Item>
+                  ))}
+              </Carousel>
+            )}
             <Popular rendered={rendered} />
           </>
         );
       case "airing":
         return (
           <>
-            <Carousel
-              indicators={false}
-              interval={1200}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {airingAnime &&
-                airingAnime.map((anime) => (
-                  <Carousel.Item key={anime.id}>
-                    <img
-                      height={680}
-                      className="d-block"
-                      src={anime.images.jpg.large_image_url}
-                      alt={anime.name}
-                      style={{ margin: "0 auto" }}
-                      onClick={() =>
-                        (window.location.href = `/anime/${anime.mal_id}`)
-                      }
-                    />
-                    <Carousel.Caption>
-                      <h3>{anime.name}</h3>
-                      <p>{anime.description}</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                ))}
-            </Carousel>
+            {!isSearch && (
+              <Carousel
+                indicators={false}
+                interval={1200}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {airingAnime &&
+                  airingAnime.map((anime) => (
+                    <Carousel.Item key={anime.id}>
+                      <img
+                        height={680}
+                        className="d-block"
+                        src={anime.images.jpg.large_image_url}
+                        alt={anime.name}
+                        style={{ margin: "0 auto" }}
+                        onClick={() =>
+                          (window.location.href = `/anime/${anime.mal_id}`)
+                        }
+                      />
+                      <Carousel.Caption>
+                        <h3>{anime.name}</h3>
+                        <p>{anime.description}</p>
+                      </Carousel.Caption>
+                    </Carousel.Item>
+                  ))}
+              </Carousel>
+            )}
             <Airing rendered={rendered} />
           </>
         );
       case "upcoming":
         return (
           <>
-            <Carousel
-              indicators={false}
-              interval={1200}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {upcomingAnime &&
-                upcomingAnime.map((anime) => (
-                  <Carousel.Item key={anime.id}>
-                    <img
-                      height={680}
-                      className="d-block"
-                      src={anime.images.jpg.large_image_url}
-                      alt={anime.name}
-                      style={{ margin: "0 auto" }}
-                      onClick={() =>
-                        (window.location.href = `/anime/${anime.mal_id}`)
-                      }
-                    />
-                    <Carousel.Caption>
-                      <h3>{anime.name}</h3>
-                      <p>{anime.description}</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                ))}
-            </Carousel>
+            {!isSearch && (
+              <Carousel
+                indicators={false}
+                interval={1200}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {upcomingAnime &&
+                  upcomingAnime.map((anime) => (
+                    <Carousel.Item key={anime.id}>
+                      <img
+                        height={680}
+                        className="d-block"
+                        src={anime.images.jpg.large_image_url}
+                        alt={anime.name}
+                        style={{ margin: "0 auto" }}
+                        onClick={() =>
+                          (window.location.href = `/anime/${anime.mal_id}`)
+                        }
+                      />
+                      <Carousel.Caption>
+                        <h3>{anime.name}</h3>
+                        <p>{anime.description}</p>
+                      </Carousel.Caption>
+                    </Carousel.Item>
+                  ))}
+              </Carousel>
+            )}
             <Upcoming rendered={rendered} />
           </>
         );
@@ -145,11 +151,15 @@ function Homepage() {
     }
   };
 
+  const handleImageClick = () => {
+    handleChange(""); // Clear the search input
+  };
+
   return (
     <HomepageStyled>
       <header>
         <div className="weblog">
-          <Link to="/">
+          <Link to="/" onClick={handleImageClick}>
             <img src={nime} alt="logo" height={300} width={300} />
           </Link>
         </div>
@@ -176,7 +186,9 @@ function Homepage() {
               </div>
             </form>
             {isSearch && search.length > 0 && searchResults.length === 0 && (
-              <p>No results found</p>
+              <div className="no-results">
+                <p>No results found</p>
+              </div>
             )}
 
             {isSearch && searchResults.length > 0 && (
@@ -208,15 +220,17 @@ function Homepage() {
             </button>
           </div>
         </div>
-        <div className="logo">
-          <h1>
-            {rendered === "popular"
-              ? "Popular Anime"
-              : rendered === "airing"
-              ? "Airing Anime"
-              : "Upcoming Anime"}
-          </h1>
-        </div>
+        {!isSearch && (
+          <div className="logo">
+            <h1>
+              {rendered === "popular"
+                ? "Popular Anime"
+                : rendered === "airing"
+                ? "Airing Anime"
+                : "Upcoming Anime"}
+            </h1>
+          </div>
+        )}
       </header>
 
       {switchComponents()}
@@ -350,6 +364,16 @@ const HomepageStyled = styled.div`
       width: 95%;
     }
 
+    .no-results {
+      display: flex;
+  
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 24px;
+      color: #00ecc7;
+    }
+
     .weblog img {
       position: absolute;
       left: -1rem;
@@ -366,9 +390,11 @@ const HomepageStyled = styled.div`
     .search-container {
       display: flex;
       font-color: #00ecc7;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content:  space-between;
       gap: 1rem;
+      
+      }
       button {
         color: #00ecc7;
         display: flex;
