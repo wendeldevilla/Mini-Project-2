@@ -27,7 +27,7 @@ function Gallery() {
     <GalleryStyled>
       <div className="back">
         <button onClick={goBack}>
-          <i className="fas fa-arrow-left"></i>
+          <i className="fas fa-arrow-left" style={{ color: "#00ecc7" }}></i>
           Back
         </button>
       </div>
@@ -76,6 +76,7 @@ const GalleryStyled = styled.div`
   flex-direction: column;
   align-items: center;
 
+  
   .back button {
     position: absolute;
     top: 2rem;
@@ -87,14 +88,8 @@ const GalleryStyled = styled.div`
     color: #eb5757;
     font-weight: 600;
     font-size: 1.2rem;
-    a {
-      font-weight: 600;
-      text-decoration: none;
-      color: #00ecc7;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    margin: 5px;
+
   }
 
   .big-image {

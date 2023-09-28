@@ -12,6 +12,7 @@ import {
   MDBBtn,
   MDBInput,
   MDBIcon,
+  MDBTypography,
 } from "mdb-react-ui-kit";
 
 function Homepage() {
@@ -43,14 +44,12 @@ function Homepage() {
   return (
     <HomepageStyled>
       <header>
-        <MDBBtn
+        <MDBTypography
+          className="display-6 position-absolute top-0 start-0"
           href="/"
-          className=" position-absolute top-0 start-0 fs-2"
-          color="#00ecc7"
-          rippleColor="light"
         >
           Anime Wiki
-        </MDBBtn>
+        </MDBTypography>
         <div className="search-container">
           <div className="filter-btn popular-filter">
             <button
