@@ -29,7 +29,7 @@ function Gallery() {
     <GalleryStyled>
       <div className="back">
         <button onClick={goBack}>
-          <i className="fas fa-arrow-left" style={{ color: "#00ecc7" }}></i>
+          <i className="fas fa-arrow-left" style={{ color: "#00ecc7" }}></i>{" "}
           Back
         </button>
       </div>
@@ -85,7 +85,7 @@ const GalleryStyled = styled.div`
     border: none;
     outline: none;
     cursor: pointer;
-    color: #eb5757;
+    color:  #00ecc7;
     font-weight: 600;
     font-size: 1.2rem;
     margin: 5px;
