@@ -42,6 +42,7 @@ function AnimeItem() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getAnime(id);
     getCharacters(id);
   }, []);
