@@ -55,6 +55,7 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   // handle submit
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (search) {

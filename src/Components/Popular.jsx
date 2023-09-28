@@ -33,11 +33,11 @@ const PopularStyled = styled.div`
   display: flex;
 
   .popular-anime {
-    margin-top: 2rem;
+    margin-top: 15rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    padding-left: 5rem;
-    padding-right: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

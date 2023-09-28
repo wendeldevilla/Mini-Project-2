@@ -51,7 +51,7 @@ function Homepage() {
                 popularAnime.map((anime) => (
                   <Carousel.Item key={anime.id}>
                     <img
-                      height={500}
+                      height={680}
                       className="d-block"
                       src={anime.images.jpg.large_image_url}
                       alt={anime.name}
@@ -86,7 +86,7 @@ function Homepage() {
                 airingAnime.map((anime) => (
                   <Carousel.Item key={anime.id}>
                     <img
-                      height={500}
+                      height={680}
                       className="d-block"
                       src={anime.images.jpg.large_image_url}
                       alt={anime.name}
@@ -121,7 +121,7 @@ function Homepage() {
                 upcomingAnime.map((anime) => (
                   <Carousel.Item key={anime.id}>
                     <img
-                      height={500}
+                      height={680}
                       className="d-block"
                       src={anime.images.jpg.large_image_url}
                       alt={anime.name}
@@ -144,6 +144,7 @@ function Homepage() {
         return <Popular rendered={rendered} />;
     }
   };
+
   return (
     <HomepageStyled>
       <header>
@@ -322,6 +323,23 @@ function Homepage() {
 const HomepageStyled = styled.div`
   background-color: #050000;
 
+  @media screen and (max-width: 768px) {
+    /* Styles for screens up to 768px wide */
+    /* Modify the styles as per your requirements */
+    header {
+      /* Example style modification */
+      width: 90%;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    /* Styles for screens up to 480px wide */
+    /* Modify the styles as per your requirements */
+    header {
+      /* Example style modification */
+      width: 100%;
+    }
+  }
+
   header {
     padding-top: 2rem;
     color: #00ecc7;
@@ -334,11 +352,12 @@ const HomepageStyled = styled.div`
 
     .weblog img {
       position: absolute;
-      left: -2rem;
-      top: -6rem;
+      left: -1rem;
+      top: -5rem;
     }
     .logo {
       display: flex;
+      position absolute;
       align-items: center;
       justify-content: center;
       margin-top: 4rem;
@@ -382,7 +401,7 @@ const HomepageStyled = styled.div`
           border: none;
           outline: none;
           border-radius: 30px;
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           background-color: #fff;
           border: 2px solid #e5e7eb;
           transition: all 0.4s ease-in-out;

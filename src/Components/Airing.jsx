@@ -2,7 +2,6 @@ import React from "react";
 import { useGlobalContext } from "../context/global";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Sidebar1 from "./Sidebar1";
 
 function Airing({ rendered }) {
   const { airingAnime, isSearch, searchResults } = useGlobalContext();
@@ -30,7 +29,6 @@ function Airing({ rendered }) {
   return (
     <PopularStyled>
       <div className="airing-anime">{conditionalRender()}</div>
-      <Sidebar1 />
     </PopularStyled>
   );
 }
@@ -42,8 +40,8 @@ const PopularStyled = styled.div`
     margin-top: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    padding-left: 5rem;
-    padding-right: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
