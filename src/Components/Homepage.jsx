@@ -12,8 +12,10 @@ import {
   MDBBtn,
   MDBInput,
   MDBIcon,
-  MDBTypography,
 } from "mdb-react-ui-kit";
+import nime from "./nime.png";
+import { Link } from "react-router-dom";
+import Carousel from "react-bootstrap/Carousel";
 
 function Homepage() {
   const {
@@ -24,32 +26,132 @@ function Homepage() {
     getAiringAnime,
     isSearch,
     searchResults,
+    airingAnime,
+    upcomingAnime,
   } = useGlobalContext();
 
   const [rendered, setRendered] = React.useState("popular");
+  const { popularAnime } = useGlobalContext();
 
   const switchComponents = () => {
     switch (rendered) {
       case "popular":
-        return <Popular rendered={rendered} />;
+        return (
+          <>
+            <Carousel
+              indicators={false}
+              interval={1200}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {popularAnime &&
+                popularAnime.map((anime) => (
+                  <Carousel.Item key={anime.id}>
+                    <img
+                      height={500}
+                      className="d-block"
+                      src={anime.images.jpg.large_image_url}
+                      alt={anime.name}
+                      style={{ margin: "0 auto" }}
+                      onClick={() =>
+                        (window.location.href = `/anime/${anime.mal_id}`)
+                      }
+                    />
+                    <Carousel.Caption>
+                      <h3>{anime.name}</h3>
+                      <p>{anime.description}</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                ))}
+            </Carousel>
+            <Popular rendered={rendered} />
+          </>
+        );
       case "airing":
-        return <Airing rendered={rendered} />;
+        return (
+          <>
+            <Carousel
+              indicators={false}
+              interval={1200}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {airingAnime &&
+                airingAnime.map((anime) => (
+                  <Carousel.Item key={anime.id}>
+                    <img
+                      height={500}
+                      className="d-block"
+                      src={anime.images.jpg.large_image_url}
+                      alt={anime.name}
+                      style={{ margin: "0 auto" }}
+                      onClick={() =>
+                        (window.location.href = `/anime/${anime.mal_id}`)
+                      }
+                    />
+                    <Carousel.Caption>
+                      <h3>{anime.name}</h3>
+                      <p>{anime.description}</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                ))}
+            </Carousel>
+            <Airing rendered={rendered} />
+          </>
+        );
       case "upcoming":
-        return <Upcoming rendered={rendered} />;
+        return (
+          <>
+            <Carousel
+              indicators={false}
+              interval={1200}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {upcomingAnime &&
+                upcomingAnime.map((anime) => (
+                  <Carousel.Item key={anime.id}>
+                    <img
+                      height={500}
+                      className="d-block"
+                      src={anime.images.jpg.large_image_url}
+                      alt={anime.name}
+                      style={{ margin: "0 auto" }}
+                      onClick={() =>
+                        (window.location.href = `/anime/${anime.mal_id}`)
+                      }
+                    />
+                    <Carousel.Caption>
+                      <h3>{anime.name}</h3>
+                      <p>{anime.description}</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                ))}
+            </Carousel>
+            <Upcoming rendered={rendered} />
+          </>
+        );
       default:
         return <Popular rendered={rendered} />;
     }
   };
-
   return (
     <HomepageStyled>
       <header>
-        <MDBTypography
-          className="display-6 position-absolute top-0 start-0"
-          href="/"
-        >
-          Anime Wiki
-        </MDBTypography>
+        <div className="weblog">
+          <Link to="/">
+            <img src={nime} alt="logo" height={300} width={300} />
+          </Link>
+        </div>
         <div className="search-container">
           <div className="filter-btn popular-filter">
             <button
@@ -72,7 +174,9 @@ function Homepage() {
                 <button type="submit">Search</button>
               </div>
             </form>
-            {isSearch && searchResults.length === 0 && <p>No results found</p>}
+            {isSearch && search.length > 0 && searchResults.length === 0 && (
+              <p>No results found</p>
+            )}
 
             {isSearch && searchResults.length > 0 && (
               <ul>
@@ -113,7 +217,9 @@ function Homepage() {
           </h1>
         </div>
       </header>
+
       {switchComponents()}
+
       <MDBFooter bgColor="#050000" className="text-center text-lg-left">
         <MDBContainer className="p-4 pb-0">
           <section className="mb-4">
@@ -215,6 +321,7 @@ function Homepage() {
 
 const HomepageStyled = styled.div`
   background-color: #050000;
+
   header {
     padding-top: 2rem;
     color: #00ecc7;
@@ -223,6 +330,12 @@ const HomepageStyled = styled.div`
     transition: all 0.4s ease-in-out;
     @media screen and (max-width: 1530px) {
       width: 95%;
+    }
+
+    .weblog img {
+      position: absolute;
+      left: -2rem;
+      top: -6rem;
     }
     .logo {
       display: flex;

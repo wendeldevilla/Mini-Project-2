@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useGlobalContext } from "../context/global";
-import { MDBBtn } from "mdb-react-ui-kit";
+import nime from "./nime.png";
+
+import { Link } from "react-router-dom";
 
 function Gallery() {
   const { getAnimePictures, pictures } = useGlobalContext();
@@ -32,14 +34,11 @@ function Gallery() {
         </button>
       </div>
 
-      <MDBBtn
-        href="/"
-        className="text-light position-absolute top-0 end-0 fs-2"
-        color="tertiary"
-        rippleColor="light"
-      >
-        Anime Wiki
-      </MDBBtn>
+      <div className="weblog">
+        <Link to="/">
+          <img src={nime} alt="logo" height={300} width={300} />
+        </Link>
+      </div>
       <div className="big-image">
         <img src={pictures[index]?.jpg.image_url} alt="" />
       </div>
@@ -75,6 +74,7 @@ const GalleryStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding:0;
 
   
   .back button {
@@ -90,6 +90,12 @@ const GalleryStyled = styled.div`
     font-size: 1.2rem;
     margin: 5px;
 
+  }
+
+  .weblog img {
+    position: absolute;
+    right: 0;
+    top: -5rem;
   }
 
   .big-image {

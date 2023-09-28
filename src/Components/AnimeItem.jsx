@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-import { MDBBtn } from "mdb-react-ui-kit";
+import nime from "./nime.png";
 
 function AnimeItem() {
   const { id } = useParams();
@@ -54,14 +54,11 @@ function AnimeItem() {
           Back to Home
         </Link>
       </div>
-      <MDBBtn
-        href="/"
-        className="text-light position-absolute top-0 end-0 fs-2"
-        color="#00ecc7"
-        rippleColor="dark"
-      >
-        Anime Wiki
-      </MDBBtn>
+      <div className="weblog">
+        <Link to="/">
+          <img src={nime} alt="logo" height={300} width={300} />
+        </Link>
+      </div>
       <h1>{title}</h1>
       <div className="details">
         <div className="detail">
@@ -160,6 +157,14 @@ function AnimeItem() {
 const AnimeItemStyled = styled.div`
   padding: 3rem 18rem;
   background-color: #050000;
+
+  .weblog img {
+    position: absolute;
+    justify-content: end;
+    right: 0;
+    top: -5rem;
+    padding: 0;
+  }
 
   .back {
     position: absolute;

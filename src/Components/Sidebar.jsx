@@ -12,9 +12,13 @@ function Sidebar() {
 
   return (
     <SidebarStyled>
-      <h5>Top 5 Popular</h5>
+      <h4>
+        Top 10 Popular
+        <br></br>
+        <h5>Anime</h5>
+      </h4>
       <div className="anime">
-        {sorted?.slice(0, 8).map((anime) => (
+        {sorted?.slice(0, 10).map((anime) => (
           <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
             <img src={anime.images.jpg.large_image_url} alt="" />
             <h5>{anime.title}</h5>
@@ -27,12 +31,20 @@ function Sidebar() {
 
 const SidebarStyled = styled.div`
   margin-top: 2rem;
-  background-color: #fff;
+  background-color: black;
   border-top: 5px solid #e5e7eb;
   padding-right: 3rem;
   padding-left: 2rem;
   padding-top: 2rem;
 
+  h4{
+    color: #00ecc7;
+    text-decoration: none;
+  }
+
+  h5{
+    color: #00ecc7;
+  }
   .anime {
     display: flex;
     flex-direction: column;
